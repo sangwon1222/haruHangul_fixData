@@ -80,6 +80,8 @@ import totalComponent from '@/components/main/oneday/totalComponent'
 import timerCheck from '@/components/timer'
 import gsap from 'gsap/all'
 import config from '@/activity/gameUtil/config'
+
+import step3Data from '@/activity/gameUtil/step3_data'
 export default {
   components: {
     basicComponent,
@@ -100,21 +102,26 @@ export default {
   methods: {
     ...mapActions('popup', ['alertPopupOpen']),
     async getList() {
-      try {
-        const { data } = await this.$axios.get(
-          '/learning/hangul/contents/step03'
-        )
-        // this.stepName = data.result.name
-        this.stepName = '복잡한 모음'
-        this.dayOfStudy = data.result.dayOfStudy
-        this.curriculum = data.result.curriculum
-      } catch (error) {
-        // console.error(error)
-        this.alertPopupOpen('step')
-        this.$router.push({
-          name: 'main'
-        })
-      }
+      const data = step3Data
+      console.log(data)
+      this.stepName = data.result.name
+      this.dayOfStudy = data.result.dayOfStudy
+      this.curriculum = data.result.curriculum
+      // try {
+      //   const { data } = await this.$axios.get(
+      //     '/learning/hangul/contents/step03'
+      //   )
+      //   // this.stepName = data.result.name
+      //   this.stepName = '복잡한 모음'
+      //   this.dayOfStudy = data.result.dayOfStudy
+      //   this.curriculum = data.result.curriculum
+      // } catch (error) {
+      //   // console.error(error)
+      //   this.alertPopupOpen('step')
+      //   this.$router.push({
+      //     name: 'main'
+      //   })
+      // }
     },
     async goMainPage() {
       await this.playclickSnd()

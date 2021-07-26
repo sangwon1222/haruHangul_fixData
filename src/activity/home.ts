@@ -13,7 +13,7 @@ export class Home extends SceneBase {
 
   async onInit() {
     // location.href = `${config.reload}`
-    history.go(-1)
+    // history.go(-1)
     // const info = await Axios.get(`${config.restAPIProd}`)
     // // console.error(info)
 

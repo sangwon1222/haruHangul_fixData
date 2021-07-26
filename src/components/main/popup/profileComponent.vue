@@ -15,10 +15,10 @@
           <div v-else class="thume default" />
         </div>
         <div class="timer">
-          <span class="time" v-if="!this.isLimitToPlay"
+          <span v-if="!this.isLimitToPlay" class="time"
             >{{ clock }}:{{ minute }}:{{ second }}</span
           >
-          <span class="time" v-if="this.isLimitToPlay"> 무제한 </span>
+          <span v-if="this.isLimitToPlay" class="time"> 무제한 </span>
         </div>
       </div>
     </div>

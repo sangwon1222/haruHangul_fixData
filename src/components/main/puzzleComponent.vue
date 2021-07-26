@@ -150,13 +150,36 @@ export default {
   },
   methods: {
     async getList() {
-      try {
-        const { data } = await this.$axios.get('/learning/hangul/puzzles')
-        this.puzzleList = data.result
-        // console.log('this.puzzleList', this.puzzleList)
-      } catch (error) {
-        // console.error(error)
-      }
+      this.puzzleList = [
+        {
+          no: 1,
+          day: 0,
+          usable: true,
+          completed: true,
+          matchedPieces: []
+        },
+        { no: 2, day: 1, usable: true, completed: true, matchedPieces: [] },
+        { no: 3, day: 10, usable: true, completed: true, matchedPieces: [] },
+        { no: 4, day: 17, usable: true, completed: true, matchedPieces: [] },
+        { no: 5, day: 24, usable: true, completed: true, matchedPieces: [] },
+        { no: 6, day: 30, usable: true, completed: true, matchedPieces: [] },
+        { no: 7, day: 37, usable: true, completed: true, matchedPieces: [] },
+        { no: 8, day: 43, usable: true, completed: true, matchedPieces: [] },
+        { no: 9, day: 50, usable: true, completed: true, matchedPieces: [] },
+        { no: 10, day: 60, usable: true, completed: true, matchedPieces: [] },
+        { no: 11, day: 70, usable: true, completed: true, matchedPieces: [] },
+        { no: 12, day: 77, usable: true, completed: true, matchedPieces: [] },
+        { no: 13, day: 83, usable: true, completed: true, matchedPieces: [] },
+        { no: 14, day: 90, usable: true, completed: true, matchedPieces: [] },
+        { no: 15, day: 100, usable: true, completed: true, matchedPieces: [] }
+      ]
+      // try {
+      //   const { data } = await this.$axios.get('/learning/hangul/puzzles')
+      //   this.puzzleList = data.result
+      //   // console.log('this.puzzleList', this.puzzleList)
+      // } catch (error) {
+      //   // console.error(error)
+      // }
     },
     reversal(e) {
       e.target.nextSibling.childNodes.forEach(function(item) {

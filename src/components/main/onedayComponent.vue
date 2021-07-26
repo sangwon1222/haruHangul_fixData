@@ -77,84 +77,97 @@ export default {
   async created() {
     await this.getList()
 
-    const activity = [
-      { name: '오늘한글', game: 'today' },
-      { name: '리듬한글', game: 'rhythm' },
-      { name: '색칠한글', game: 'paint' },
-      { name: '짝꿍한글', game: 'partner' },
-      { name: '나의한글', game: 'myhangul' },
-      { name: '노닥한글', game: 'nodak' },
-      { name: '깨단한글', game: 'total' }
-    ]
+    // const activity = [
+    //   { name: '오늘한글', game: 'today' },
+    //   { name: '리듬한글', game: 'rhythm' },
+    //   { name: '색칠한글', game: 'paint' },
+    //   { name: '짝꿍한글', game: 'partner' },
+    //   { name: '나의한글', game: 'myhangul' },
+    //   { name: '노닥한글', game: 'nodak' },
+    //   { name: '깨단한글', game: 'total' }
+    // ]
     this.activityName = 'today'
 
-    let data = await this.$axios.get('/learning/hangul/contents/step01')
-    if (config.studyDay < 17) {
-      data = await this.$axios.get('/learning/hangul/contents/step01')
-    } else if (config.studyDay > 16 && config.studyDay < 44) {
-      data = await this.$axios.get('/learning/hangul/contents/step02')
-    } else if (config.studyDay >= 44 && config.studyDay < 61) {
-      data = await this.$axios.get('/learning/hangul/contents/step03')
-    } else if (config.studyDay >= 61 && config.studyDay < 71) {
-      data = await this.$axios.get('/learning/hangul/contents/step04')
-    } else if (config.studyDay >= 71 && config.studyDay < 84) {
-      data = await this.$axios.get('/learning/hangul/contents/step05')
-    } else if (config.studyDay >= 84 && config.studyDay < 101) {
-      data = await this.$axios.get('/learning/hangul/contents/step06')
-    }
+    // let data = await this.$axios.get('/learning/hangul/contents/step01')
+    // if (config.studyDay < 17) {
+    //   data = await this.$axios.get('/learning/hangul/contents/step01')
+    // } else if (config.studyDay > 16 && config.studyDay < 44) {
+    //   data = await this.$axios.get('/learning/hangul/contents/step02')
+    // } else if (config.studyDay >= 44 && config.studyDay < 61) {
+    //   data = await this.$axios.get('/learning/hangul/contents/step03')
+    // } else if (config.studyDay >= 61 && config.studyDay < 71) {
+    //   data = await this.$axios.get('/learning/hangul/contents/step04')
+    // } else if (config.studyDay >= 71 && config.studyDay < 84) {
+    //   data = await this.$axios.get('/learning/hangul/contents/step05')
+    // } else if (config.studyDay >= 84 && config.studyDay < 101) {
+    //   data = await this.$axios.get('/learning/hangul/contents/step06')
+    // }
 
-    const result = data.data.result
-    const d = Object.keys(result.curriculum)
+    // const result = data.data.result
+    // const d = Object.keys(result.curriculum)
 
-    let name = data.data.result.name
-    if (name == '기본모음') {
-      name = '기본 모음'
-    }
-    if (name == '기본자음') {
-      name = '기본 자음'
-    }
-    if (name == '복잡한모음') {
-      name = '복잡한 모음'
-    }
-    if (name == '대표받침') {
-      name = '대표 받침'
-    }
-    if (name == '복잡한받침') {
-      name = '복잡한 받침'
-    }
-    if (name == '곁모음') {
-      name = '곁받침'
-    }
+    // let name = data.data.result.name
+    // if (name == '기본모음') {
+    //   name = '기본 모음'
+    // }
+    // if (name == '기본자음') {
+    //   name = '기본 자음'
+    // }
+    // if (name == '복잡한모음') {
+    //   name = '복잡한 모음'
+    // }
+    // if (name == '대표받침') {
+    //   name = '대표 받침'
+    // }
+    // if (name == '복잡한받침') {
+    //   name = '복잡한 받침'
+    // }
+    // if (name == '곁모음') {
+    //   name = '곁받침'
+    // }
 
-    this.stepTitle = name
+    // this.stepTitle = name
 
-    for (let i = 0; i < d.length; i++) {
-      if (config.studyDay == result.curriculum[i].day) {
-        const cur = Object.keys(result.curriculum[i].curriculum)
-        const curData = result.curriculum[i]
+    // for (let i = 0; i < d.length; i++) {
+    //   if (config.studyDay == result.curriculum[i].day) {
+    //     const cur = Object.keys(result.curriculum[i].curriculum)
+    //     const curData = result.curriculum[i]
 
-        for (let j = 0; j < cur.length; j++) {
-          if (curData.curriculum[j].completed == false) {
-            const name = curData.curriculum[j].name
+    //     for (let j = 0; j < cur.length; j++) {
+    //       if (curData.curriculum[j].completed == false) {
+    //         const name = curData.curriculum[j].name
 
-            for (const info of activity) {
-              if (info.name == name) {
-                this.activityName = info.game
-                break
-              }
-            }
-            break
-          }
-        }
-      }
-    }
+    //         for (const info of activity) {
+    //           if (info.name == name) {
+    //             this.activityName = info.game
+    //             break
+    //           }
+    //         }
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
     this.$el.setAttribute('style', 'display: block')
   },
   methods: {
     // 통신
     async getList() {
       try {
-        const { data } = await this.$axios.get('/learning/hangul')
+        // const { data } = await this.$axios.get('/learning/hangul')
+        const data = {
+          result: {
+            availableContents: {
+              step1: true,
+              step2: true,
+              step3: true,
+              step4: true,
+              step5: true,
+              step6: true
+            },
+            completedAll: true
+          }
+        }
         this.completedAll = data.result.completedAll
 
         this.steps = data.result.availableContents

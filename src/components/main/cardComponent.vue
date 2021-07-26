@@ -32,6 +32,10 @@
 import { mapActions } from 'vuex'
 import wordComponent from '@/components/main/card/wordComponent'
 
+import consonantData from '@/activity/gameUtil/comsonant_data'
+import finalConsonantData from '@/activity/gameUtil/finalconsonant_data'
+import vowelData from '@/activity/gameUtil/vowel_data'
+
 export default {
   components: { wordComponent },
   data() {
@@ -51,39 +55,66 @@ export default {
     async createList() {
       const list = ['consonant', 'vowel', 'finalconsonant']
       this.hasNew = []
+      // for (const label of list) {
+      //   const { data } = await this.$axios.get(
+      //     `/learning/hangul/cards/${label}`
+      //   )
+      //   this.hasNew.push(data.result.hasNew)
+      // }
       for (const label of list) {
-        const { data } = await this.$axios.get(
-          `/learning/hangul/cards/${label}`
-        )
-        this.hasNew.push(data.result.hasNew)
+        this.hasNew.push(label)
       }
     },
     async getList(type) {
       this.tab = type
-      try {
-        const { data } = await this.$axios.get(
-          `/learning/hangul/cards/${this.tab}`
-        )
-        this.cardList = data.result.letters
-        //
-        // this.hasNew = data.result.hasNew
-        //
+      console.log(type)
 
-        this.cardView = []
-        for (const c of this.cardList) {
-          if (c.cards.length === 1) {
-            c.cards[0].letter = c.letter
-            this.cardView.push(c.cards[0])
-          } else if (c.cards.length === 2) {
-            c.cards[0].letter = c.letter
-            c.cards[1].letter = c.letter
-            this.cardView.push(c.cards[0], c.cards[1])
-          }
-        }
-        this.viewListUpdate(this.cardView)
-      } catch (error) {
-        // console.error(error)
+      if (type == 'consonant') {
+        this.cardList = consonantData.result.letters
       }
+      if (type == 'finalconsonant') {
+        this.cardList = finalConsonantData.result.letters
+      }
+      if (type == 'vowel') {
+        this.cardList = vowelData.result.letters
+      }
+      this.hasNew = false
+      this.cardView = []
+      for (const c of this.cardList) {
+        if (c.cards.length === 1) {
+          c.cards[0].letter = c.letter
+          this.cardView.push(c.cards[0])
+        } else if (c.cards.length === 2) {
+          c.cards[0].letter = c.letter
+          c.cards[1].letter = c.letter
+          this.cardView.push(c.cards[0], c.cards[1])
+        }
+      }
+      this.viewListUpdate(this.cardView)
+      // try {
+      //   const { data } = await this.$axios.get(
+      //     `/learning/hangul/cards/${this.tab}`
+      //   )
+      //   this.cardList = data.result.letters
+      //   //
+      //   // this.hasNew = data.result.hasNew
+      //   //
+
+      //   this.cardView = []
+      //   for (const c of this.cardList) {
+      //     if (c.cards.length === 1) {
+      //       c.cards[0].letter = c.letter
+      //       this.cardView.push(c.cards[0])
+      //     } else if (c.cards.length === 2) {
+      //       c.cards[0].letter = c.letter
+      //       c.cards[1].letter = c.letter
+      //       this.cardView.push(c.cards[0], c.cards[1])
+      //     }
+      //   }
+      //   this.viewListUpdate(this.cardView)
+      // } catch (error) {
+      //   // console.error(error)
+      // }
     }
   }
 }

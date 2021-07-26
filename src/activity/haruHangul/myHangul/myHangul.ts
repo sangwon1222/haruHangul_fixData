@@ -330,25 +330,25 @@ export class MyHangul extends SceneBase {
     // this.mMyhangulRecord.destroy()
     this.mMyhangulRecord = null
 
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const info = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    const code = info.data.result[index].cd
+    // const index = App.Handle.getSceneIndex()
+    // const info = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
+    // const code = info.data.result[index].cd
 
-    const end = await Axios.post(
-      `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
-      { wrongCount: 0 },
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
-    )
+    // const end = await Axios.post(
+    //   `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
+    //   { wrongCount: 0 },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
     // console.warn(end)
 
     const EOP = new Eop()

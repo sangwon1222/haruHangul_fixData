@@ -144,9 +144,6 @@ export default {
       }
     }
   },
-  created() {
-    //
-  },
   watch: {
     limitPlay() {
       this.time = 5
@@ -167,6 +164,9 @@ export default {
         `width:${this.per * this.time}px`
       )
     }
+  },
+  created() {
+    //
   },
   methods: {
     callback() {

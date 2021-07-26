@@ -31,7 +31,7 @@
       <div class="txt-limit">
         <p v-if="!limitPlay" class="min">5분</p>
         <p v-if="!limitPlay" class="max">150분</p>
-        <div class="no-linit-text" v-if="limitPlay">
+        <div v-if="limitPlay" class="no-linit-text">
           <i class="ico" /><span>무제한</span>
         </div>
         <div class="no-limit">

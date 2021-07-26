@@ -135,26 +135,26 @@ export class Today extends SceneBase {
     }
     window.onkeypress = () => null
 
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const info = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    const code = info.data.result[index].cd
+    // const index = App.Handle.getSceneIndex()
+    // const info = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
+    // const code = info.data.result[index].cd
 
-    // 액티비티 완료 정보 전송
-    const end = await Axios.post(
-      `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
-      { wrongCount: 0 },
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
-    )
+    // // 액티비티 완료 정보 전송
+    // const end = await Axios.post(
+    //   `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
+    //   { wrongCount: 0 },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
 
     // 학습시간 전송
     await this.endTime()

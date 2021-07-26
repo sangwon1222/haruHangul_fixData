@@ -52,13 +52,48 @@ export default {
   methods: {
     ...mapActions('parentPage', ['reportUpdate']),
     async getPlayResult() {
-      try {
-        const { data } = await this.$axios.get('/learning/hangul/report')
-        this.reportUpdate(data.result)
-        console.log(data)
-      } catch (error) {
-        // console.log(error)
+      const data = {
+        result: {
+          achievements: [
+            {
+              name: '듣기',
+              score: 100,
+              evaluation:
+                '소리를 듣고 이해하는 능력이 매우 뛰어나요. 자주 소통해 주세요.'
+            },
+            {
+              name: '읽기',
+              score: 100,
+              evaluation:
+                '글자를 읽고 구분하는 능력이 매우 좋아요. 읽은 글자의 의미도 잘 압니다.'
+            },
+            {
+              name: '쓰기',
+              score: 100,
+              evaluation:
+                '한글 쓰는 방법에 대한 이해가 정말 뛰어나요. 많이 칭찬해 주세요.'
+            }
+          ],
+          learning: {
+            phonemeCount: 359,
+            wordCount: 384
+          },
+          play: {
+            attendance: 0,
+            averageTime: 0,
+            contentStep: 6,
+            studyDays: 100,
+            time: 14
+          }
+        }
       }
+      // try {
+      //   const { data } = await this.$axios.get('/learning/hangul/report')
+      //   this.reportUpdate(data.result)
+      //   console.log(data)
+      // } catch (error) {
+      //   // console.log(error)
+      // }
     },
     lnbSelect() {
       this.$refs.lnbMenu.removeAttribute('class')

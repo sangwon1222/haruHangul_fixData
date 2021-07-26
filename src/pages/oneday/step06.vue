@@ -80,6 +80,8 @@ import totalComponent from '@/components/main/oneday/totalComponent'
 import timerCheck from '@/components/timer'
 import gsap from 'gsap/all'
 import config from '@/activity/gameUtil/config'
+
+import step6Data from '@/activity/gameUtil/step6_data'
 export default {
   components: {
     basicComponent,
@@ -96,31 +98,36 @@ export default {
   },
   async created() {
     await this.getList()
-    const { data } = await this.$axios.get('/learning/hangul')
-    const completedAll = data.result.completedAll
-    if (completedAll) {
-      this.dayOfStudy = 101
-      this.curriculum.day = 100
-    }
+    // const { data } = await this.$axios.get('/learning/hangul')
+    // const completedAll = data.result.completedAll
+    // if (completedAll) {
+    //   this.dayOfStudy = 101
+    //   this.curriculum.day = 100
+    // }
   },
   methods: {
     ...mapActions('popup', ['alertPopupOpen']),
     async getList() {
-      try {
-        const { data } = await this.$axios.get(
-          '/learning/hangul/contents/step06'
-        )
+      const data = step6Data
+      console.log(data)
+      this.stepName = data.result.name
+      this.dayOfStudy = data.result.dayOfStudy
+      this.curriculum = data.result.curriculum
+      // try {
+      //   const { data } = await this.$axios.get(
+      //     '/learning/hangul/contents/step06'
+      //   )
 
-        // this.stepName = data.result.name
-        this.stepName = '겹받침'
-        this.dayOfStudy = data.result.dayOfStudy
-        this.curriculum = data.result.curriculum
-      } catch (error) {
-        this.alertPopupOpen('step')
-        this.$router.push({
-          name: 'main'
-        })
-      }
+      //   // this.stepName = data.result.name
+      //   this.stepName = '겹받침'
+      //   this.dayOfStudy = data.result.dayOfStudy
+      //   this.curriculum = data.result.curriculum
+      // } catch (error) {
+      //   this.alertPopupOpen('step')
+      //   this.$router.push({
+      //     name: 'main'
+      //   })
+      // }
     },
     async goMainPage() {
       await this.playclickSnd()

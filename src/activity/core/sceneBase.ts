@@ -35,25 +35,27 @@ export class SceneBase extends PIXI.Container {
   }
 
   async endTime() {
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
     this.mLearnTime = Math.floor((Date.now() - this.mLearnTime) / 1000)
-    const time = await Axios.post(
-      `${config.restAPI}/learning/child/time/learned`,
-      { learnedTime: this.mLearnTime },
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
+    // const time = await Axios.post(
+    //   `${config.restAPI}/learning/child/time/learned`,
+    //   { learnedTime: this.mLearnTime },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
+
+    console.groupCollapsed(
+      `%c ${this.mName} 플레이 시간`,
+      'background: #000; color: #fff; padding:4px;'
     )
+    console.log(`[ ${this.mName} ]를 [${this.mLearnTime}초] 플레이 했습니다.`)
+    console.groupEnd()
 
     this.mLearnTime = null
     window['startTime'] = null
-
-    console.log(
-      `%c ${time.config.data}초 동안 액티비티를 플레이 했습니다.`,
-      'border:2px black solid;'
-    )
   }
 
   async onInit() {

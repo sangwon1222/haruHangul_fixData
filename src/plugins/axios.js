@@ -19,11 +19,11 @@ const config = {
   //상용
 
   // baseURL: 'https://tobe-qa-user-api.arambookclub.com',
-  baseURL: 'https://qa-api.arambookclub.com',
+  // baseURL: 'https://qa-api.arambookclub.com',
   headers: {
     // authorization: `Bearer ${token}`
-    authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIiLCJzeXNNZW1JZCI6Ik1FLTIwMjAxMTEyMTM0MTAzNDkzIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImNoaWxkSWQiOiJNQy0yMDIwMTExMjEzNDEwMzAwMCIsImNoaWxkTmFtZSI6IlRFU1QiLCJjaGlsZEFnZSI6MiwiY2hpbGRUaHVtYm5haWwiOiIiLCJscm5nTWVtU2Vxbm8iOjIwOCwiaWF0IjoxNjE3NzY2NTg3LCJleHAiOjE2NDkyMTYxODd9.sg_eWWF6iRU9uYk_99K66m3-YlXgwAn9n4e1IKPA6hQ'
+    // authorization:
+    //   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIiLCJzeXNNZW1JZCI6Ik1FLTIwMjAxMTEyMTM0MTAzNDkzIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImNoaWxkSWQiOiJNQy0yMDIwMTExMjEzNDEwMzAwMCIsImNoaWxkTmFtZSI6IlRFU1QiLCJjaGlsZEFnZSI6MiwiY2hpbGRUaHVtYm5haWwiOiIiLCJscm5nTWVtU2Vxbm8iOjIwOCwiaWF0IjoxNjE3NzY2NTg3LCJleHAiOjE2NDkyMTYxODd9.sg_eWWF6iRU9uYk_99K66m3-YlXgwAn9n4e1IKPA6hQ'
     // authorization:
     //   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIiLCJzeXNNZW1JZCI6Ik1FLTIwMjAwOTExMTQwMDI3MzkxIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImNoaWxkSWQiOiJNQy0yMDIwMDkxMDExMTAwMDAyNiIsImNoaWxkTmFtZSI6IuyVhOuejDAyNiIsImNoaWxkQWdlIjoyMSwiY2hpbGRUaHVtYm5haWwiOiIiLCJscm5nTWVtU2Vxbm8iOjIwNCwiaWF0IjoxNjE3Nzc3ODU1LCJleHAiOjE2MTgzODI2NTV9.EyOwJV-ASzLfH2nM8d993L3nh4-hHXMYlzXTaYvXy1k'
     // 2 단계

@@ -224,18 +224,20 @@ export default {
       date = `0${new Date().getDate()}`
     }
 
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const time = await this.$axios.get(`${config.restAPI}/learning/hangul`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
+    // const time = await this.$axios.get(`${config.restAPI}/learning/hangul`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
 
-    let completedDate = `${year}년 ${month}월 ${date}일`
+    // let completedDate = `${year}년 ${month}월 ${date}일`
 
-    if (time.data.result.completedDate)
-      completedDate = time.data.result.completedDate
+    // if (time.data.result.completedDate)
+    //   completedDate = time.data.result.completedDate
+
+    const completedDate = `${year}년 ${month}월 ${date}일`
 
     this.today = completedDate
 
@@ -252,43 +254,57 @@ export default {
     ...mapActions('timer', ['timeSave']),
     ...mapActions('parentPage', ['userinfoUpdate']),
     async timeUpdate(t) {
-      try {
-        await this.$axios.post('/learning/child/time/remained', {
-          remainedTime: t
-        })
-      } catch (error) {
-        // console.error(error)
-      }
+      // try {
+      //   await this.$axios.post('/learning/child/time/remained', {
+      //     remainedTime: t
+      //   })
+      // } catch (error) {
+      //   // console.error(error)
+      // }
     },
     async getUserInfo() {
-      try {
-        const { data } = await this.$axios.get('/learning/hangul/user')
-        if (data.result.playStgupTime === 0) {
-          this.$router.push({
-            name: `opening`
-          })
-          return false
-        }
-        this.userinfoUpdate(data)
-        this.userName = data.result.name
-        this.userFace = data.result.profile
-        this.dayOfStudy = data.result.dayOfStudy
-        this.randomKey = Math.floor(Math.random() * data.result.lastPuzzleIndex)
+      // try {
+      // const { data } = await this.$axios.get('/learning/hangul/user')
+      // if (data.result.playStgupTime === 0) {
+      //   this.$router.push({
+      //     name: `opening`
+      //   })
+      //   return false
+      // }
+      // this.userinfoUpdate(data)
+      // this.userName = data.result.name
+      // this.userFace = data.result.profile
+      // this.dayOfStudy = data.result.dayOfStudy
+      // this.randomKey = Math.floor(Math.random() * data.result.lastPuzzleIndex)
 
-        if (this.$route.params.timeUpdate) {
-          this.timeSave(data.result.playStgupTime)
-          this.timeUpdate(data.result.playStgupTime)
-          return false
-        }
-        if (data.result.playPosbTime <= 0) {
-          this.timeSave(data.result.playStgupTime)
-        } else {
-          this.timeSave(data.result.playPosbTime)
-        }
-        // this.timeSave(200)
-      } catch (error) {
-        // console.error(error)
-      }
+      const data = {}
+      data.result = {}
+      data.result.name = 'test'
+      data.result.profile = ''
+      data.result.dayOfStudy = 100
+      data.result.lastPuzzleIndex = 100
+      data.result.playStgupTime = 8000
+
+      console.log(data)
+      this.userinfoUpdate(data)
+      this.userName = data.result.name
+      this.userFace = data.result.profile
+      this.dayOfStudy = data.result.dayOfStudy
+      this.randomKey = Math.floor(Math.random() * data.result.lastPuzzleIndex)
+
+      // if (this.$route.params.timeUpdate) {
+      //   this.timeSave(data.result.playStgupTime)
+      //   this.timeUpdate(data.result.playStgupTime)
+      //   return false
+      // }
+      // if (data.result.playPosbTime <= 0) {
+      //   this.timeSave(data.result.playStgupTime)
+      // } else {
+      //   this.timeSave(data.result.playPosbTime)
+      // }
+      // } catch (error) {
+      // console.error(error)
+      // }
     },
     // 기능
     async next(v) {

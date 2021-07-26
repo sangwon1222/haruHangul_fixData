@@ -1138,24 +1138,24 @@ export class Nodak extends SceneBase {
     await this.endTime()
     /**녹음하고 나오는 부분에서 보낸다. */
     window['spine'] = null
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const info = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    const code = info.data.result[index].cd
-    const end = await Axios.post(
-      `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
-      { wrongCount: 0 },
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
-    )
+    // const index = App.Handle.getSceneIndex()
+    // const info = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
+    // const code = info.data.result[index].cd
+    // const end = await Axios.post(
+    //   `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
+    //   { wrongCount: 0 },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
 
     const eop = new Eop()
     this.addChild(eop)

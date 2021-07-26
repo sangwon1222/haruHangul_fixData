@@ -8,8 +8,8 @@ export default {
   /** plugin 폴더 하위 axios.js파일 > config의 baseURL도 바꿔줘야 한다.*/
 
   // /** *************상용************* */
-  // mainPage: 'https://arambookclub.com',
-  // restAPI: 'https://api.arambookclub.com',
+  mainPage: 'https://arambookclub.com',
+  restAPI: 'https://api.arambookclub.com',
   // restAPIProd: 'https://api.arambookclub.com/learning/hangul/activities',
   // puzzleAPI: 'https://api.arambookclub.com/learning/hangul/puzzles',
 
@@ -23,10 +23,10 @@ export default {
   /** *************_TOBE_************* */
 
   // /** *************_QA_************* */
-  mainPage: 'https://dev.arambookclub.com',
-  restAPI: 'https://qa-api.arambookclub.com',
-  restAPIProd: 'https://qa-api.arambookclub.com/learning/hangul/activities',
-  puzzleAPI: 'https://qa-api.arambookclub.com/learning/hangul/puzzles',
+  // mainPage: 'https://dev.arambookclub.com',
+  // restAPI: 'https://qa-api.arambookclub.com',
+  // restAPIProd: 'https://qa-api.arambookclub.com/learning/hangul/activities',
+  // puzzleAPI: 'https://qa-api.arambookclub.com/learning/hangul/puzzles',
   // /** *************_QA_************* */
 
   resource: 'https://contents.arambookclub.com/contents/hangul/res/',

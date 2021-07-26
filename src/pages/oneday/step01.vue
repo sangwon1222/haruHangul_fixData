@@ -94,6 +94,8 @@ import totalComponent from '@/components/main/oneday/totalComponent'
 import timerCheck from '@/components/timer'
 import config from '@/activity/gameUtil/config'
 import gsap from 'gsap/all'
+
+import step1Data from '@/activity/gameUtil/step1_data'
 export default {
   components: {
     basicComponent,
@@ -113,17 +115,19 @@ export default {
   },
   methods: {
     async getList() {
-      try {
-        const { data } = await this.$axios.get(
-          '/learning/hangul/contents/step01'
-        )
-        // this.stepName = data.result.name
-        this.stepName = '기본 모음'
-        this.dayOfStudy = data.result.dayOfStudy
-        this.curriculum = data.result.curriculum
-      } catch (error) {
-        // console.error(error)
-      }
+      // try {
+      // const { data } = await this.$axios.get(
+      //   '/learning/hangul/contents/step01'
+      // )
+      // this.stepName = data.result.name
+      const data = step1Data
+      console.log(data)
+      this.stepName = data.result.name
+      this.dayOfStudy = data.result.dayOfStudy
+      this.curriculum = data.result.curriculum
+      // } catch (error) {
+      // console.error(error)
+      // }
     },
     async goMainPage() {
       await this.playclickSnd()

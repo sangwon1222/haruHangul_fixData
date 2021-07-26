@@ -228,46 +228,40 @@ export class App extends PIXI.Application {
   }
 
   async timeUpdate() {
-    if (this.mStartTime) {
-      const token = localStorage.getItem('token')
-
-      const user = await Axios.get(`${config.restAPI}/learning/hangul/user`, {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      })
-
-      const playTime = Math.floor((Date.now() - this.mStartTime) / 1000)
-
-      let restTime = user.data.result.playPosbTime - playTime
-
-      if (restTime < 1) {
-        restTime = 1
-      }
-      user.data.result.playPosbTime = restTime
-
-      await Axios.post(
-        `${config.restAPI}/learning/child/time/remained`,
-        {
-          remainedTime: restTime
-        },
-        {
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-        }
-      )
-
-      // console.log(`play_time=> ${playTime}`)
-      // console.log(`rest_time=> ${restTime}`)
-      // console.log(`user_time=> ${user.data.result.playPosbTime}`)
-
-      if (restTime == 1) {
-        // window.location.href = `${config.mainPage}/hangul`
-        this.goMainPage()
-        return
-      }
-    }
+    // if (this.mStartTime) {
+    //   const token = localStorage.getItem('token')
+    //   const user = await Axios.get(`${config.restAPI}/learning/hangul/user`, {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   })
+    //   const playTime = Math.floor((Date.now() - this.mStartTime) / 1000)
+    //   let restTime = user.data.result.playPosbTime - playTime
+    //   if (restTime < 1) {
+    //     restTime = 1
+    //   }
+    //   user.data.result.playPosbTime = restTime
+    //   await Axios.post(
+    //     `${config.restAPI}/learning/child/time/remained`,
+    //     {
+    //       remainedTime: restTime
+    //     },
+    //     {
+    //       headers: {
+    //         authorization: `Bearer ${token}`
+    //       }
+    //     }
+    //   )
+    //   // console.log(`play_time=> ${playTime}`)
+    //   // console.log(`rest_time=> ${restTime}`)
+    //   // console.log(`user_time=> ${user.data.result.playPosbTime}`)
+    //   if (restTime == 1) {
+    //     // window.location.href = `${config.mainPage}/hangul`
+    //     this.goMainPage()
+    //     return
+    // }
+    // }
+    // this.goMainPage()
   }
 
   async goScene(name?: string) {

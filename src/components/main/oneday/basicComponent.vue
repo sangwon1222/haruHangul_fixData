@@ -129,14 +129,14 @@
 
 <script>
 export default {
-  mounted() {
-    // // console.log(this.state.day)
-  },
   props: {
     state: {
       type: Object,
       default: null
     }
+  },
+  mounted() {
+    // // console.log(this.state.day)
   }
 }
 </script>

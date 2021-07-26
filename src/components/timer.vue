@@ -70,17 +70,18 @@ export default {
     }
   },
   async created() {
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const user = await this.$axios.get(
-      `${config.restAPI}/learning/hangul/user`,
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
-    )
-    this.saveTime = user.data.result.playPosbTime
+    // const user = await this.$axios.get(
+    //   `${config.restAPI}/learning/hangul/user`,
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
+    // this.saveTime = user.data.result.playPosbTime
+    this.saveTime = 8000
     await this.timeStart()
   },
   beforeDestroy() {
@@ -101,9 +102,9 @@ export default {
     },
     async timeUpdate() {
       try {
-        await this.$axios.post('/learning/child/time/remained', {
-          remainedTime: this.playPsTime
-        })
+        // await this.$axios.post('/learning/child/time/remained', {
+        //   remainedTime: this.playPsTime
+        // })
         // console.log('data', this.playPsTime)
       } catch (error) {
         // console.error(error)

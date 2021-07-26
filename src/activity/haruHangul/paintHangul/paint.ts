@@ -888,24 +888,24 @@ export class Paint extends SceneBase {
 
     await this.endTime()
     // console.log(`%c 오답갯수 [${wrongCnt}]`, 'border:2px red solid;')
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const info = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    const code = info.data.result[index].cd
-    const end = await Axios.post(
-      `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
-      { wrongCount: wrongCnt },
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
-    )
+    // const index = App.Handle.getSceneIndex()
+    // const info = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
+    // const code = info.data.result[index].cd
+    // const end = await Axios.post(
+    //   `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
+    //   { wrongCount: wrongCnt },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
     // console.warn(end)
 
     if (this.mBGM) {

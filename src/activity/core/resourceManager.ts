@@ -22,7 +22,8 @@ export class ResourceManager {
   }
   //-----------------------------------
 
-  private mURLRoot = Util.Config.resource
+  // private mURLRoot = Util.Config.resource
+  private mURLRoot = 'https://imestudy.smartdoodle.net/rsc/'
   // Noto sans
   // private mResource: { [name: string]: PIXI.LoaderResource };
   private mCommonResource: { [name: string]: PIXI.LoaderResource }

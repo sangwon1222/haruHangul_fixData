@@ -770,22 +770,22 @@ export class Puzzle extends SceneBase {
     this.startTime()
 
     // config.puzzleStep은 activityPlayer.vue의 created에서 선언
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const gameCode = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
+    // const index = App.Handle.getSceneIndex()
+    // const gameCode = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
 
-    const info = App.Handle.getInfo()
-    const code = gameCode.data.result[index]['cd']
+    // const info = App.Handle.getInfo()
+    // const code = gameCode.data.result[index]['cd']
 
-    this.mCompletedPieceAry = info.matchedPieces
-    if (info.matchedPieces.length == 9) {
-      this.mCompletedPieceAry = []
-    }
+    // this.mCompletedPieceAry = info.matchedPieces
+    // if (info.matchedPieces.length == 9) {
+    //   this.mCompletedPieceAry = []
+    // }
 
     // // console.log(
     //   '%c 게임 정보 ↓  ',
@@ -911,6 +911,8 @@ export class Puzzle extends SceneBase {
     this.mIntroScene = null
     this.removeChild(this.mBg)
 
+    this.mCompletedPieceAry = []
+
     this.mGameScene = new GameScene(
       this.mCompletedPieceAry,
       this.mPieceAry,
@@ -950,32 +952,30 @@ export class Puzzle extends SceneBase {
     this.removeChild(this.mGameScene)
 
     // 게임정보를 백엔드에 쏴준다
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const info = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    const code = info.data.result[index].cd
+    // const index = App.Handle.getSceneIndex()
+    // const info = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
+    // const code = info.data.result[index].cd
 
-    const matched = this.mGameScene.matched
+    // const matched = this.mGameScene.matched
 
-    if (matched.length !== 0) {
-      const day = App.Handle.getInfo()['day']
-      const savePiece = await Axios.post(
-        `${config.restAPI}/learning/hangul/puzzles/day/${day}`,
-        { matchedPieces: matched },
-        {
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-        }
-      )
-      // // console.warn(end)
-      // console.warn(savePiece)
-    }
+    // if (matched.length !== 0) {
+    //   const day = App.Handle.getInfo()['day']
+    //   const savePiece = await Axios.post(
+    //     `${config.restAPI}/learning/hangul/puzzles/day/${day}`,
+    //     { matchedPieces: matched },
+    //     {
+    //       headers: {
+    //         authorization: `Bearer ${token}`
+    //       }
+    //     }
+    //   )
+    // }
 
     App.Handle.onCloseApp()
   }

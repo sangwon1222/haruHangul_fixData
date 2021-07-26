@@ -720,24 +720,24 @@ export class Partner extends SceneBase {
     window.onkeypress = () => null
 
     await this.endTime()
-    const token = localStorage.getItem('token')
+    // const token = localStorage.getItem('token')
 
-    const index = App.Handle.getSceneIndex()
-    const info = await Axios.get(`${config.restAPIProd}`, {
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    })
-    const code = info.data.result[index].cd
-    const end = await Axios.post(
-      `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
-      { wrongCount: this.mWrongCount },
-      {
-        headers: {
-          authorization: `Bearer ${token}`
-        }
-      }
-    )
+    // const index = App.Handle.getSceneIndex()
+    // const info = await Axios.get(`${config.restAPIProd}`, {
+    //   headers: {
+    //     authorization: `Bearer ${token}`
+    //   }
+    // })
+    // const code = info.data.result[index].cd
+    // const end = await Axios.post(
+    //   `${config.restAPI}/learning/hangul/day/${config.selectDay}/activities/${code}`,
+    //   { wrongCount: this.mWrongCount },
+    //   {
+    //     headers: {
+    //       authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // )
     // console.warn(end)
 
     if (this.mBGM) this.mBGM.pause()
